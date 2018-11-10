@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import './index.scss'
+import MUtil from 'util/mm.jsx'
+import User from 'service/user-service.jsx'
+const __mm = new MUtil()
+const __user = new User()
 export default class Login extends Component{
   constructor(props){
     super(props);
     this.state = {
-      username="",
+      username:"",
       password:''
     }
   }
+  // 当输入改变
   onInputChange(){
     let inputValue = e.target.value;
         inputName = e.targe.name;
@@ -15,11 +20,13 @@ export default class Login extends Component{
           [inputName] : inputValue
         })
   }
+  //  当键盘弹起事件
   onInputKeyUp(){
     if(e.keyCode === 13){
       this.onSubmit()
     }
   }
+  //  提交登录
   onSubmit(){
     let loginInfo = {
       username:this.state.username,
@@ -35,7 +42,6 @@ export default class Login extends Component{
             <div className="panel-body">
               <form >
                 <div className="form-group">
-                
                 <input type="text"
                   name="username"
                   onKeyUp = {e => this.onInputKeyUp(e)}
@@ -53,8 +59,6 @@ export default class Login extends Component{
                 </div>
                 <button className="btn btn-primary btn-lg btn-block">登陆</button>
               </form>
-
-
             </div>
           </div>
         </div> 

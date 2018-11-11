@@ -12,6 +12,9 @@ export default class Login extends Component{
       password:''
     }
   }
+  componentWillMount(){
+    document.title = '登录 --Mall ADMIN'
+  }
   // 当输入改变
   onInputChange(){
     let inputValue = e.target.value;
@@ -32,6 +35,17 @@ export default class Login extends Component{
       username:this.state.username,
       password:this.state.password
     }
+    let checkResult = __user.checkLoginInfo(loginInfo);
+    if(!checkResult.status){
+      __mm.errorTip(checkResult.msg);
+      return 
+    }
+    __user.login(loginInfo).then(res => {
+        _mm.setSorage("userInfo", res);
+        this.props.history.push(this.state.redirect);
+      }, errMsg => {
+        _mm.errorTip(errMsg);
+      });
     
   }
   render(){

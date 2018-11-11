@@ -1,0 +1,21 @@
+.color-box{
+  display: block;
+  height: 160px;
+  text-align: center;
+  padding:20px 0px ;
+  opacity: .9;
+  transition:all .3s;
+  &:hover{
+    color:yellow;
+    text-decoration: none;
+    transform:scale(1.08);
+  }
+  .count{
+    font-size:50px;
+    height:80px;
+    line-height: 80px;
+  }
+  .desc{
+    font-size: 16px;
+  }
+}
